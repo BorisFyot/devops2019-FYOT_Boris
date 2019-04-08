@@ -16,4 +16,4 @@ Par défauts les valeurs sont les suivantes :
 -	-s : wpsource=https://wordpress.org/latest.tar.gz
 
 Pour le lancement sans paramètre : PATH/script.sh 
-Pour le lancement avec paramètre : PATH/script.sh -h 192.168.10.2
+Pour le lancement avec paramètre : PATH/script.sh -h 192.168.10.2    
