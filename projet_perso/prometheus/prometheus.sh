@@ -42,6 +42,7 @@ then
 	echo "Problème lors de l'extraction"
 	exit 203
 fi
+
 #renommage
 mv -f /etc/prometheus/$promname/ /etc/prometheus/prometheus/
 
@@ -51,21 +52,24 @@ then
 	echo "Problème lors de l'ouverture du port 9090"
 	exit 204
 fi
+
 # Reload firewall
 firewall-cmd --reload
 
 #copy
-#if !(cp ~/projet/prometheus/ressource/prometheus.service /etc/systemd/system/prometheus.service)
-#then
-#	echo "probleme copie du fichier config"
-#	exit 205
-#fi
+if !(cp $adresse/ressource/prometheus.service /etc/systemd/system/prometheus.service)
+then
+	echo "probleme copie du fichier config"
+	exit 205
+fi
+
 #copy
-if !(cp ~/projet/prometheus/ressource/prometheus.yml /etc/prometheus/prometheus/prometheus.yml)
+if !(cp $adresse/ressource/prometheus.yml /etc/prometheus/prometheus/prometheus.yml)
 then
 	echo "probleme copie du fichier yml"
 	exit 206
 fi
+
 #modif des droits	
 if !(chmod +777 /etc/systemd/system/prometheus.service)
 then
@@ -77,9 +81,8 @@ chown -R prometheus:prometheus /etc/prometheus
 chown -R prometheus:prometheus /var/lib/prometheus
 
 #systemctl
-
-#systemctl start prometheus.service
-#systemctl daemon-reload
-#systemctl enable prometheus.service
-#systemctl status prometheus.service
+systemctl start prometheus.service
+systemctl daemon-reload
+systemctl enable prometheus.service
+systemctl status prometheus.service
 

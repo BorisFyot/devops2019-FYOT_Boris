@@ -44,8 +44,9 @@ fi
 firewall-cmd --reload
 
 #copy
-if !(cp ~/projet/prometheus/ressource/node_exporter.service /etc/systemd/system/node_exporter.service)
+if !(cp $adresse/ressource/node_exporter.service /etc/systemd/system/node_exporter.service)
 then
+        echo $adresse/ressource/node_exporter.service
 	echo "probleme copie du fichier config"
 	exit 107
 fi

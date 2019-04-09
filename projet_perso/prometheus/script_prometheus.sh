@@ -33,10 +33,12 @@ promname=prometheus-2.8.1.linux-amd64
 promarchive=prometheus.gz
 #Path of the prom file
 cheminversprom="./$promarchive"
+#adresse des sources 
+adresse=/root/tpgit/projet_sys/projet_perso/prometheus
 
 ########################################################################################################################
 
-export nodesource nodearchive havetowget cheminversnode nodename promsource promname promarchive cheminversprom
+export nodesource nodearchive havetowget cheminversnode nodename promsource promname promarchive cheminversprom adresse
 
 #while getopts ":s:h:n:u:p: arg:" opt; do
 #	case $opt in
