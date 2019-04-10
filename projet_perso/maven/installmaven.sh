@@ -21,14 +21,12 @@ mavensource=http://mirrors.standaloneinstaller.com/apache/maven/maven-3/3.6.0/bi
 mavenarchive=maven.gz
 #Path of the prom file
 cheminversarch="./$mavenarchive"
+#Unic name for archive
+jdkarchive=JDK.tar.gz
+#Path of the prom file
+cheminversarchjdk="./$jdkarchive"
 #adresse des sources 
-adresse=/root/tpgit/projet_sys/projet_perso/maven
-
-# Install java if not yet installed
-if !(yum list installed java-1.8.0-openjdk-devel)
-then
-    yum --assumeyes install java-1.8.0-openjdk-devel
-fi
+adresse=`pwd`
 
 # creation du dossier de stockage
 if !(ls /usr/local/src)
@@ -48,31 +46,59 @@ then
 	fi
 fi
 
+# move JDK in usr/local/src
+if !(cp $adresse/ressource/JDK.tar.gz $cheminversarchjdk)
+then 
+	echo "Problème de copie du source"
+	exit 203
+else
+	if !(tar -xzvf $cheminversarchjdk)
+	then
+		echo "Problème lors de l'extraction"
+		exit 203	
+	fi
+fi
+
 # sources extraction
 if !(tar -xzvf $cheminversarch)
 then
 	echo "Problème lors de l'extraction"
-	exit 203
+	exit 204
 fi
 
 #renommage
 mv apache-maven-3.6.0/ apache-maven/ 
+mv jdk1.8.0_201/ jdk/ 
 
 #copy
 if !(cp $adresse/ressource/maven.sh /etc/profile.d/maven.sh)
 then
 	echo "probleme copie du maven.sh"
-	exit 204
+	exit 205
+fi
+
+#copy
+if !(cp $adresse/ressource/jdk.sh /etc/profile.d/jdk.sh)
+then
+	echo "probleme copie du jdk.sh"
+	exit 206
 fi
 
 #modif des droits	
 if !(chmod +x /etc/profile.d/maven.sh)
 then
 	echo "probleme modification droit"
-	exit 205
+	exit 207
 else
 	source /etc/profile.d/maven.sh
 fi
 
-
+#modif des droits	
+if !(chmod +x /etc/profile.d/jdk.sh)
+then
+	echo "probleme modification droit"
+	exit 208
+else
+	source /etc/profile.d/jdk.sh
+fi
 
