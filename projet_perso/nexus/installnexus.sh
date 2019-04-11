@@ -59,18 +59,6 @@ then
 	exit 203
 fi
 
-#modif des droits	
-if !(chmod +777 /etc/systemd/system/nexus.service)
-then
-	echo "probleme modification droit"
-	exit 204
-fi
-#modif des droits
-if !(chmod +777 /usr/local/src/nexus)
-then
-	echo "probleme modification droit"
-	exit 205
-fi
 #verification si user existe
 if !(id nexus)
 then
