@@ -15,7 +15,7 @@
 #Indicator for download source
 havetowget=0
 
-#Prometheus
+#artifactory
 artifactsource=https://bintray.com/jfrog/artifactory-pro/download_file?file_path=org%2Fartifactory%2Fpro%2Fjfrog-artifactory-pro%2F6.9.1%2Fjfrog-artifactory-pro-6.9.1.zip
 #Unic name for archive
 artifactarchive=artifactory.zip
@@ -57,12 +57,13 @@ mv artifactory-pro-6.9.1 artifactory
 
 
 #verification si user existe
-if !(id nexus)
+if !(id artifactory)
 then
 	useradd artifactory 
 fi
 
 chown -R artifactory:artifactory /usr/local/src/artifactory
+
 /usr/local/src/artifactory/bin/installService.sh
 
 systemctl daemon-reload
