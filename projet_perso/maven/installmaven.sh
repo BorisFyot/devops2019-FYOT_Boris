@@ -28,6 +28,20 @@ cheminversarchjdk="./$jdkarchive"
 #adresse des sources 
 adresse=`pwd`
 
+#Si dossier existe déja exit
+if (ls /usr/local/src/apache-maven/)
+then
+	echo "Dossier maven existe déja"
+	exit 404
+fi
+
+if (ls /usr/local/src/jdk/)
+then
+	echo "Dossier jdk existe déja"
+	exit 404
+fi
+
+
 # creation du dossier de stockage
 if !(ls /usr/local/src)
 then 

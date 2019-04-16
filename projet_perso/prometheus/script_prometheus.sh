@@ -34,7 +34,7 @@ promarchive=prometheus.gz
 #Path of the prom file
 cheminversprom="./$promarchive"
 #adresse des sources 
-adresse=/root/tpgit/projet_sys/projet_perso/prometheus
+adresse=`pwd`
 
 ########################################################################################################################
 

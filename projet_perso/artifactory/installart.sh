@@ -24,7 +24,12 @@ cheminversarch="./$artifactarchive"
 #adresse des sources 
 adresse=`pwd`
 
-
+# si dossier existe déja exit.
+if (ls  /usr/local/src/artifactory)
+then	
+	echo "dossier artifactory existe déja merci de supprimer"
+	exit 404
+fi
 
 
 # creation du dossier de stockage

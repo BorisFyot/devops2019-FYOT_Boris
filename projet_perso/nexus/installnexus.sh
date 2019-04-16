@@ -24,6 +24,13 @@ cheminversarch="./$nexusarchive"
 #adresse des sources 
 adresse=`pwd`
 
+# si dossier existe déja exit.
+if (ls  /usr/local/src/nexus)
+then	
+	echo "dossier nexus existe déja merci de supprimer"
+	exit 404
+fi
+
 # creation du dossier de stockage
 if !(ls /usr/local/src)
 then 
