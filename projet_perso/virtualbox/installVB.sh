@@ -49,4 +49,11 @@ fi
 #yum install
 yum install VirtualBox-6.0
 
+yum install gcc make perl
+
+yum install kernel-devel kernel-devel-3.10.0-957.10.1.el7x86_64
+
+yum install kernel
+
+
 rm oracle_vbox.asc
