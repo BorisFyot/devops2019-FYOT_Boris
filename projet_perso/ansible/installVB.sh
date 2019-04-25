@@ -12,11 +12,7 @@
 ##Déclaration des variables.
 
 
-yum -y install epel-release
+subscription-manager repos --enable rhel-7-server-ansible-2.6-rpms
 
-yum -y install python-pip
-
-pip install --upgrade pip
-
-pip install ansible
+yum install ansible
 

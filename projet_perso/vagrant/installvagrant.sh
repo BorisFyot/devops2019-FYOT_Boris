@@ -11,6 +11,6 @@
 
 ##Déclaration des variables.
 user="adminl"
-source="https://releases.hashicorp.com/vagrant/1.9.6/vagrant_1.9.6_x86_64.rpm"
+source="https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.rpm"
 
 yum -y install $source
