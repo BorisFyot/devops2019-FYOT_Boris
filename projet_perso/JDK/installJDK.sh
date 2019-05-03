@@ -10,7 +10,7 @@
 #######################################################################################################################
 
 ##Déclaration des variables.
-
+#sudo yum install java-1.8.0-openjdk-devel
 
 #Indicator for download source
 havetowget=0
