@@ -1,0 +1,38 @@
+---
+- name: Terraform | terraform install
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
+    dest: /usr/bin
+    remote_src: True
+
+- name: Azure CLI | import rpm key
+  rpm_key:
+    state: present
+    key: https://packages.microsoft.com/keys/microsoft.asc
+
+- name: Azure CLI | set up the yum repo
+  yum_repository: 
+    name: azure-cli
+    description: Azure CLI YUM repo
+    baseurl: https://packages.microsoft.com/yumrepos/azure-cli
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+
+- name: Azure CLI | CLI install
+  yum:
+    name: azure-cli
+    state: present
+
+- name: Remove repository (and clean up left-over metadata)
+  yum_repository:
+    name: azure-cli
+    state: absent
+  notify: yum-clean-metadata
+
+- name: Remove repository from a specific repo file
+  yum_repository:
+    name: azure-cli
+    file: external_repos
+    state: absent
+

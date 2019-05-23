@@ -1,0 +1,25 @@
+- name: Download foo.conf
+  get_url:
+    url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/
+
+
+- name:  import rpm key
+  rpm_key:
+    state: present
+	key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+- firewalld:
+    port: 8080/tcp
+    permanent: yes
+    state: disabled
+
+- name: Make sure a service is running
+  systemd:
+    state: started
+    name: jenkins
+
+- name: Make sure a service is running
+  systemd:
+    state: enable
+    name: jenkins

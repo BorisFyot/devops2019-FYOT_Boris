@@ -1,0 +1,5 @@
+- name: Minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
+    dest: /usr/local/bin/minikube
+    mode: '0777'

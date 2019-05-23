@@ -1,0 +1,7 @@
+- name: Extract JDK 12
+  unarchive:
+    src: https://bintray.com/jfrog/artifactory-pro/download_file?file_path=org%2Fartifactory%2Fpro%2Fjfrog-artifactory-pro%2F6.9.1%2Fjfrog-artifactory-pro-6.9.1.zip
+    dest: /usr/local/src/artifactory
+    remote_src: yes
+
+- name: 

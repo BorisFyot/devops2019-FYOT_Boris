@@ -1,0 +1,8 @@
+---
+- name: epel , python
+  yum:
+    name: epel-release, python-pip
+    state: latest
+
+- pip:
+    name: ansible

@@ -1,0 +1,5 @@
+---
+- name: ansible server 
+  yum:
+    name: ansible
+    state: latest
